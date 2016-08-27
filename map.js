@@ -1,8 +1,26 @@
-var origins = [
-    "17 Fisherwick Gardens, Ballymena"
-  ];
+var origins = [];
+
+$(document).ready(function()
+{
+    $("#submit").click(function()
+    {
+        var start = $("#start").val();
+        origins.push(start);
+        console.log(origins);
+        console.log(JSON.stringify(origins));
+
+
+
+        var end = $("#destination").val();
+        destinations.push(end);
+        console.log(destinations);
+        console.log(JSON.stringify(destinations));
+    });
+});
+
+
+
   var destinations = [
-    "37 Loughan Hill, Ballymena"
   ];
   var query = {
     origins: origins,
@@ -25,10 +43,10 @@ var origins = [
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     createTable();
     for (var i = 0; i < origins.length; i++) {
-      origins[i] += ' Station, London, UK';
+      origins[i] += origins;
     }
     for (var j = 0; j < destinations.length; j++) {
-      destinations[j] += ', London, UK';
+      destinations[j] += destinations;
     }
     dms = new google.maps.DistanceMatrixService();
     dirService = new google.maps.DirectionsService();
