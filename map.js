@@ -42,12 +42,6 @@ $(document).ready(function()
     }
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     createTable();
-    for (var i = 0; i < origins.length; i++) {
-      origins[i] += origins;
-    }
-    for (var j = 0; j < destinations.length; j++) {
-      destinations[j] += destinations;
-    }
     dms = new google.maps.DistanceMatrixService();
     dirService = new google.maps.DirectionsService();
     dirRenderer = new google.maps.DirectionsRenderer({preserveViewport:true});
