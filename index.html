@@ -13,77 +13,26 @@
 <body>
 
 
-<div id="map_canvas" style="width:70%; height:54%"></div>
+<div id="container">
+Start Location<input type = "text" class ="start" name = "start" id = "start">
+Destination<input type = "text" name = "destination" id = "destination">
+<input type = "submit" id ="submit" class = "submit" onclick ="initialize()">
+  <div id="map"></div>
+  <div id="controls">
+    <select id="mode" onChange="updateMode()">
+      <option value="driving">Driving</option>
+      <option value="walking" selected="selected">Walking</option>
+    </select><br/>
+    <select id="units" onChange="updateUnits()">
+      <option value="km">Kilometers</option>
+      <option value="mi" selected="selected">Miles</option>
+    </select>
+  </div>
+
+  <table id="matrix"></table>
 
 
-<div style="width:100%; height:10%" id="distance_direct"></div>
+</div>
 
-
-
-
-<div style="width:100%; height:10%" id="distance_road"></div>
-<table align="center" valign="center">
-
-
-<tr>
-
-
-<td colspan="7" align="center"><b>Find the distance between two locations</b></td>
-
-
-</tr>
-
-
-
-
-<tr>
-   &nbsp;
-</tr>
-
-
-
-
-<tr>
-
-
-<td>First address:</td>
-
-
-   &nbsp;
-   <input name="<span class=" type="text" />address1" id="address1" size="50"/>
-   &nbsp;
-
-
-<td>Second address:</td>
-
-
-   &nbsp;
-   <input name="<span class=" type="text" />address2" id="address2" size="50"/>
-</tr>
-
-
-
-
-<tr>
-   &nbsp;
-</tr>
-
-
-
-
-<tr>
-
-
-<td colspan="7" align="center"><input type="button" value="Show" onclick="initialize();"/></td>
-
-
-</tr>
-
-
-</table>
-
-<form>
-
-</form>
 </body>
 </html>
