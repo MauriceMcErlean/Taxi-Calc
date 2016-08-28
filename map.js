@@ -14,8 +14,10 @@ function addarea() {
         destinations.push(end);
         console.log(destinations);
         console.log(JSON.stringify(destinations));
-    }
 
+        $("#map").css({"width":"100%", "height":"300px", "border":"1px solid grey"});
+}
+    
 
 
   var destinations = [
@@ -91,7 +93,8 @@ function addarea() {
         td.innerHTML = distance + "<br/>" + duration;
 
         var summary = document.getElementById("summary");
-        summary.innerHTML += "The Journey is " + distance + "and will roughly take " + duration; 
+        summary.innerHTML += "The Journey is " + distance + " and will roughly take " + duration; 
+        
       }
     }
   }
