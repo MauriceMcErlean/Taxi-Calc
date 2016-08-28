@@ -1,9 +1,8 @@
 var origins = [];
 
-$(document).ready(function()
-{
-    $("#submit").click(function()
-    {
+
+
+function addarea() {
         var start = $("#start").val();
         origins.push(start);
         console.log(origins);
@@ -15,8 +14,7 @@ $(document).ready(function()
         destinations.push(end);
         console.log(destinations);
         console.log(JSON.stringify(destinations));
-    });
-});
+    }
 
 
 
@@ -91,6 +89,9 @@ $(document).ready(function()
         var duration = rows[i].elements[j].duration.text;
         var td = document.getElementById('element-' + i + '-' + j);
         td.innerHTML = distance + "<br/>" + duration;
+
+        var summary = document.getElementById("summary");
+        summary.innerHTML += "The Journey is " + distance + "and will roughly take " + duration; 
       }
     }
   }

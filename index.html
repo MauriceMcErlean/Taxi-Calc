@@ -15,22 +15,15 @@
 
 
 <div id="container">
+<div id = "summary"></div>
 Start Location<input type = "text" class ="start" name = "start" id = "start">
 Destination<input type = "text" name = "destination" id = "destination">
-<input type = "submit" id ="submit" class = "submit" onclick ="initialize()">
+<input type = "submit" id ="submit" class = "submit" onclick ="addarea(), initialize()">
   <div id="map"></div>
-  <div id="controls">
-    <select id="mode" onChange="updateMode()">
-      <option value="driving">Driving</option>
-      <option value="walking" selected="selected">Walking</option>
-    </select><br/>
-    <select id="units" onChange="updateUnits()">
-      <option value="km">Kilometers</option>
-      <option value="mi" selected="selected">Miles</option>
-    </select>
-  </div>
 
   <table id="matrix"></table>
+
+
 
 
 </div>
