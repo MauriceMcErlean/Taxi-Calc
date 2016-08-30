@@ -95,6 +95,36 @@ function addarea() {
         var summary = document.getElementById("summary");
         summary.innerHTML += "The Journey is " + distance + " and will roughly take " + duration; 
         
+
+        //first mile is 3.80, every mile after is 1.80. 
+
+
+        //first mile will add 3.80 then remove 1 from total to travel
+        //remaining miles left * the 1.80
+
+         var fareshow = document.getElementById("fareshow");
+
+
+
+
+
+        var firstmile = 3.80;
+        var standardmile = 1.20;
+
+       
+        var faredistance = parseInt(distance);
+
+        var standardmilefare = standardmile * faredistance -1 + firstmile ;
+
+
+
+
+
+
+        fareshow.innerHTML += "The fare will cost £<b>" + standardmilefare.toFixed(2) + "</b>"
+
+      
+
       }
     }
   }
@@ -167,3 +197,74 @@ function addarea() {
     tr.appendChild(td);
     return td;
   }
+
+
+
+
+// This example displays an address form, using the autocomplete feature
+      // of the Google Places API to help users fill in the information.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+          document.getElementById(component).value = '';
+          document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            document.getElementById(addressType).value = val;
+          }
+        }
+      }
+
+      // Bias the autocomplete object to the user's geographical location,
+      // as supplied by the browser's 'navigator.geolocation' object.
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      }
+
